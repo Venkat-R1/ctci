@@ -4,7 +4,7 @@ import java.util.*;
 
 public class LinkedList<T> {
     private Node<T> head;
-    public int size = 0;
+    private int size = 0;
 
     public LinkedList(Node<T> node) {
         head = node;
@@ -14,8 +14,12 @@ public class LinkedList<T> {
     public Node<T> getHead() {
         return this.head;
     }
+    
+    public int getSize(){
+        return this.size;
+    }
 
-    private void addToTail(T value) {
+    public void addToTail(T value) {
         Node<T> end = new Node<>(value);
         Node<T> n = head;
         while (n.next != null) {
@@ -25,19 +29,19 @@ public class LinkedList<T> {
         size++;
     }
 
-    private void addAtBeginning(T value) {
+    public void addAtBeginning(T value) {
         Node<T> newNode = new Node<>(value);
         newNode.next = this.head;
         this.head = newNode;
         size++;
     }
 
-    private void removeAtBeginning() {
+    public void removeAtBeginning() {
         head = head.next;
         size--;
     }
 
-    private void removeAtEnd() {
+    public void removeAtEnd() {
         Node<T> node = head;
         while (node.next.next != null) {
             node = node.next;
@@ -46,7 +50,7 @@ public class LinkedList<T> {
         size--;
     }
 
-    private void addAtIndex(int i, T value) {
+    public void addAtIndex(int i, T value) {
         if (i == 0) {
             addAtBeginning(value);
         } else {
@@ -65,7 +69,7 @@ public class LinkedList<T> {
 
     }
 
-    private void removeAtIndex(int i) {
+    public void removeAtIndex(int i) {
         if (i == 0)
             removeAtBeginning();
         else {
@@ -79,6 +83,17 @@ public class LinkedList<T> {
             node.next = node.next.next;
         }
         size--;
+    }
+
+    public void printList(){
+        Node<T> n = head;
+        while(n != null){
+            System.out.print(n.value);
+            if(n.next!=null){
+                System.out.print("->");
+            }
+            n = n.next;
+        }
     }
 
     public static void main(String[] args) {
