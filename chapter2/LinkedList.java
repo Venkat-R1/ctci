@@ -6,6 +6,9 @@ public class LinkedList<T> {
     private Node<T> head;
     private int size = 0;
 
+    public LinkedList(){
+        
+    }
     public LinkedList(Node<T> node) {
         head = node;
         size++;
@@ -22,6 +25,10 @@ public class LinkedList<T> {
     public void addToTail(T value) {
         Node<T> end = new Node<>(value);
         Node<T> n = head;
+        if(n == null){
+            head = end;
+            return;
+        }
         while (n.next != null) {
             n = n.next;
         }
@@ -31,6 +38,10 @@ public class LinkedList<T> {
 
     public void addAtBeginning(T value) {
         Node<T> newNode = new Node<>(value);
+        if(head == null){
+            this.head = newNode;
+            return;
+        }
         newNode.next = this.head;
         this.head = newNode;
         size++;

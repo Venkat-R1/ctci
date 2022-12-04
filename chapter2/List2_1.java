@@ -13,7 +13,7 @@ public class List2_1{
             }else{
                 set.add(head.value);
                 previous = head;
-            }
+            } 
             
             head = head.next;
         }
