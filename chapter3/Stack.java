@@ -2,31 +2,26 @@ package chapter3;
 
 public class Stack<T> {
 
-    private StackNode<T> top;
-
-    private class StackNode<T> {
-        private T data;
-        private StackNode<T> next;
-
-        public StackNode(T data) {
-            this.data = data;
-        }
+    public Stack(StackNode<T> node){
+        this.top = node;
     }
 
-    public StackNode<T> pop() {
+    private StackNode<T> top;
+
+    public T pop() {
         if (this.top == null) {
             System.out.println("no element available in stack");
         }
         StackNode<T> node = this.top;
         this.top = this.top.next;
-        return node;
+        return node.data;
     }
 
-    public StackNode<T> peek() {
+    public T peek() {
         if (this.top == null) {
             System.out.println("no element available in stack");
         }
-        return this.top;
+        return this.top.data;
     }
 
     public void push(T data) {
@@ -39,4 +34,13 @@ public class Stack<T> {
         return this.top == null;
     }
 
+}
+
+class StackNode<T> {
+    public T data;
+    public StackNode<T> next;
+
+    public StackNode(T data) {
+        this.data = data;
+    }
 }
